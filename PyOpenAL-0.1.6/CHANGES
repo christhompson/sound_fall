@@ -1,0 +1,31 @@
+
+* March 2003 : PyOpenAL 0.1
+  * First release
+
+* March 2003 : PyOpenAL 0.1.1
+  * openal4soya now automagically compute (by derivation) the source speed.
+  * openal4soya can now load sound asynchronously
+  * fixed a bug in the test.py script (openal replaced by pyopenal)
+  
+* April 2003 : PyOpenAL 0.1.2
+  * PyOpenAL is now licensed under the LGPL (instead of GPL);
+    this choice sounds because OpenAL is LGPL'ed too.
+  * sound played asynchronously are now canceled if stop() is called
+    before the sound starts
+
+* December 2003 : PyOpenAL 0.1.3
+  * minor bugfixes
+
+* December 2003 : PyOpenAL 0.1.4
+  * Moved openal4soya into soya
+  * Bugfixes:
+    * Remove "home_page" keyword in setup.py, which cause troubles
+    with old python
+
+* July 2005 : PyOpenAL 0.1.5
+  * Now compile with the latest OpenAL CVS (thanks Daja77 !)
+
+* April 2006 : PyOpenAL 0.1.6
+  * Update for new OpenAL with libopenal and libalut (thanks Duck !)
+
+
