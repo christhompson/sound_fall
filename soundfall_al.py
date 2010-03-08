@@ -57,7 +57,7 @@ class Piece:
         self.source.position = ((xstart - 6) * 0.2 , ystart * 0.1, dist)
         self.source.velocity = (0.0, 0.0, 0.0)
         self.source.buffer = buf[ystart]
-        self.source.looping = 1
+        self.source.looping = 0
         self.source.play()
         
         # collission source
@@ -70,8 +70,12 @@ class Piece:
         # Check the move, update on grid
         # Need to add collission checking with prior pieces
         if dir == 'l':
+            print self.xpos
+            print self.ypos
             if self.xpos <= 0: self.col.play()
-            elif board.grid[self.xpos - 1][self.ypos]: self.col.play()
+            elif board.grid[self.xpos - 1][self.ypos]:
+                self.col.play()
+                return
             elif self.xpos > 0: self.xpos -= 1
         
         if dir == 'r':
@@ -79,10 +83,12 @@ class Piece:
             print self.ypos
             if self.xpos >= 11: self.col.play()
             elif board.grid[self.xpos + 1][self.ypos]: self.col.play()
-            elif self.xpos < 12: self.xpos += 1
+            elif self.xpos < 11: self.xpos += 1
 
         
         if dir == 'u':
+            print self.xpos
+            print self.ypos
             if self.ypos >= 21: self.col.play()
             elif board.grid[self.xpos][self.ypos + 1]: self.col.play()
             elif self.ypos < 21: self.ypos += 1
@@ -102,6 +108,8 @@ class Piece:
         self.source.play()
         
         self.col.position = self.source.position
+        
+        time.sleep(2)
     
     def place(self):
         self.source.stop()
@@ -160,9 +168,11 @@ def main():
         # get input -- NOTE: we only listen to keydowns currently
         for event in pygame.event.get():
             if event.type == QUIT:
+                pygame.quit()
                 return
             if event.type == KEYDOWN:
                 if event.key == K_ESCAPE:
+                    pygame.quit()
                     return
                 elif event.key == K_UP:
                     piece.move('u',board)
